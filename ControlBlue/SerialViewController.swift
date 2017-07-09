@@ -230,83 +230,113 @@ final class SerialViewController: UIViewController, UITextFieldDelegate, Bluetoo
           serial.sendMessageToDevice(msg)
     
     }
-    
+            var msgL = l1
     func slidersendL(slider: UISlider)
     {
         print(slider.value)
-        var msg = stopOptionKey
+
         
         if slider.value > 0.8 {
             slider.tintColor = UIColor.red
-            msg = l5
+            if msgL == l5{
+                return
+            }
+            msgL = l5
             
         }else if slider.value > 0.6 {
             slider.tintColor = UIColor.orange
-            msg = l4
+            if msgL == l4{
+                return
+            }
+            msgL = l4
         }else if slider.value > 0.4 {
             slider.tintColor = UIColor.yellow
-            msg = l3
+            if msgL == l3{
+                return
+            }
+            msgL = l3
         }
         else if slider.value > 0.2 {
             slider.tintColor = UIColor.green
-            msg = l2
+            if msgL == l2{
+                return
+            }
+            msgL = l2
         }
         else if slider.value < 0.21 {
             slider.tintColor = UIColor.blue
-            msg = l1
+            if msgL == l1{
+            return
+            }
+            msgL = l1
         }
 
         let pref = UserDefaults.standard.integer(forKey: MessageOptionKey)
         switch pref {
         case MessageOption.newline.rawValue:
-            msg += "\n"
+            msgL += "\n"
         case MessageOption.carriageReturn.rawValue:
-            msg += "\r"
+            msgL += "\r"
         case MessageOption.carriageReturnAndNewline.rawValue:
-            msg += "\r\n"
+            msgL += "\r\n"
         default:
-            msg += ""
+            msgL += ""
         }
-        serial.sendMessageToDevice(msg)
+        serial.sendMessageToDevice(msgL)
         
     }
-    
+          var msgR = r1
     func slidersendR(slider: UISlider)
     {
         print(slider.value)
-        var msg = stopOptionKey
+
         
         if slider.value > 0.8 {
             slider.tintColor = UIColor.red
-            msg = r5
+            if msgR == r5{
+                return
+            }
+            msgR = r5
         }else if slider.value > 0.6 {
             slider.tintColor = UIColor.orange
-            msg = r4
+            if msgR == r4{
+                return
+            }
+            msgR = r4
         }else if slider.value > 0.4 {
             slider.tintColor = UIColor.yellow
-            msg = r3
+            if msgR == r3{
+                return
+            }
+            msgR = r3
         }
         else if slider.value > 0.2 {
             slider.tintColor = UIColor.green
-            msg = r2
+            if msgR == r2{
+                return
+            }
+            msgR = r2
         }
         else if slider.value < 0.21 {
             slider.tintColor = UIColor.blue
-            msg = r1
+            if msgR == r1{
+                return
+            }
+            msgR = r1
         }
         
         let pref = UserDefaults.standard.integer(forKey: MessageOptionKey)
         switch pref {
         case MessageOption.newline.rawValue:
-            msg += "\n"
+            msgR += "\n"
         case MessageOption.carriageReturn.rawValue:
-            msg += "\r"
+            msgR += "\r"
         case MessageOption.carriageReturnAndNewline.rawValue:
-            msg += "\r\n"
+            msgR += "\r\n"
         default:
-            msg += ""
+            msgR += ""
         }
-        serial.sendMessageToDevice(msg)
+        serial.sendMessageToDevice(msgR)
         
     }
     
